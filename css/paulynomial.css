@@ -1,18 +1,18 @@
 @font-face {
   font-family: "BebasNeue";
-  src: url("/fonts/BebasNeueRegular.woff") format("woff")
+  src: url("/fonts/BebasNeueRegular.woff") format("woff");
 }
 
 @font-face {
   font-family: "BebasNeue";
   src: url("/fonts/BebasNeueBold.woff") format("woff");
-  font-weight: bold
+  font-weight: bold;
 }
 
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 html {
@@ -25,15 +25,15 @@ html {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none
+  user-select: none;
 }
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
-  color: #333333;
-  background-color: #fff
+  color: #333;
+  background-color: #fff;
 }
 
 h2 {
@@ -50,7 +50,7 @@ h2 {
   font-size: 3.5em;
   line-height: 1em;
   letter-spacing: 0.05em;
-  padding-left: 0.05em
+  padding-left: 0.05em;
 }
 
 hr {
@@ -58,8 +58,8 @@ hr {
   width: 56px;
   border-color: #1a1a1a;
   border-width: 2px;
-  border: 1px solid #eeeeee;
-  display: block
+  border: 1px solid #eee;
+  display: block;
 }
 
 p {
@@ -68,7 +68,7 @@ p {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
-  user-select: text
+  user-select: text;
 }
 
 button,
@@ -91,12 +91,11 @@ a.button {
   padding: 0.7em 2em;
   margin-bottom: 10px;
   border-radius: 2px;
-  border: 0;
   cursor: pointer;
   width: 100%;
   background-color: #1a1a1a;
   border: 1px solid #1a1a1a;
-  color: #ffffff
+  color: #fff;
 }
 
 button:hover,
@@ -104,7 +103,7 @@ a.button:hover {
   background-color: #343434;
   border-color: #343434;
   opacity: 1;
-  text-decoration: none
+  text-decoration: none;
 }
 
 .modal {
@@ -115,16 +114,15 @@ a.button:hover {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 380px;
-  background-color: #ffffff;
+  background-color: #fff;
   text-align: center;
-  border: 1px solid black
+  border: 1px solid black;
 }
 
 .modal-content {
   position: relative;
-  min-height: 460px;
   padding: 30px 70px 30px;
-  min-height: 350px
+  min-height: 350px;
 }
 
 .about-animation {
@@ -132,21 +130,20 @@ a.button:hover {
   top: 5px;
   right: 5px;
   z-index: 2;
-  font-size: 0.7em
+  font-size: 0.7em;
 }
 
 .about-animation span {
-  float: right
+  float: right;
 }
 
 .about-animation a {
   color: #343434;
   font-style: italic;
-  text-decoration: none
+  text-decoration: none;
 }
 
 .about-animation-content {
-  display: none;
   width: 250px;
   position: relative;
   float: right;
@@ -158,13 +155,13 @@ a.button:hover {
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
-  background-color: #ffffff;
+  background-color: #fff;
   border: 1px solid black;
-  padding: 20px 20px 20px
+  padding: 20px 20px 20px;
 }
 
 .about-animation-content a {
   color: #343434;
   font-weight: bold;
-  text-decoration: none
+  text-decoration: none;
 }
