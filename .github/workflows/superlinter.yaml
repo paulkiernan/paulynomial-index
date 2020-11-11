@@ -16,8 +16,10 @@ jobs:
         uses: github/super-linter@v3
         env:
           DEFAULT_BRANCH: main
-          FILTER_REGEX_EXCLUDE: userdata_quickstart_node.template|userdata_rancher_server.template
           OUTPUT_DETAILS: detailed
           VALIDATE_ALL_CODEBASE: true
-          VALIDATE_LATEX: true
+          VALIDATE_CSS: true
+          VALIDATE_HTML: true
+          VALIDATE_JAVASCRIPT_STANDARD: true
+          VALIDATE_JSON: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
