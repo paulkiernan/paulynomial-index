@@ -19,6 +19,7 @@ jobs:
           OUTPUT_DETAILS: detailed
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_CSS: true
+          VALIDATE_DOCKERFILE: true
           VALIDATE_HTML: true
           VALIDATE_JAVASCRIPT_STANDARD: true
           VALIDATE_JSON: true
