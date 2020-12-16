@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: paulynomial-index-service
+spec:
+  selector:
+    app: paulynomial-index
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
