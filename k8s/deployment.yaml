@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paulynomial-index-nginx
+  labels:
+    app: paulynomial-index
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: paulynomial-index
+  template:
+    metadata:
+      labels:
+        app: paulynomial-index
+    spec:
+      containers:
+      - name: paulynomial-index
+        image: paulynomial/paulynomial-index:latest
+        ports:
+        - containerPort: 80
