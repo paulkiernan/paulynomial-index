@@ -17,6 +17,7 @@ spec:
       containers:
       - name: paulynomial-index
         image: paulynomial/paulynomial-index:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         livenessProbe:
