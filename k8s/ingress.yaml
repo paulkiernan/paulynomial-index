@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/description: Ingress for main personal website splash page
+  name: paulynomial-index-ingress
+  namespace: paulynomial-index
+spec:
+  rules:
+  - host: paulynomial.com
+    http:
+      paths:
+      - backend:
+          serviceName: paulynomial-index-service
+          servicePort: 80
+        path: /
+        pathType: Prefix
+  - host: new.paulynomial.com
+    http:
+      paths:
+      - backend:
+          serviceName: paulynomial-index-service
+          servicePort: 80
+        path: /
+        pathType: Prefix
