@@ -15,7 +15,15 @@ spec:
           servicePort: 80
         path: /
         pathType: Prefix
-  - host: new.paulynomial.com
+  - host: paulinomial.com
+    http:
+      paths:
+      - backend:
+          serviceName: paulynomial-index-service
+          servicePort: 80
+        path: /
+        pathType: Prefix
+  - host: paul-kiernan.com
     http:
       paths:
       - backend:
