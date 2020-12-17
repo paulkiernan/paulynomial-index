@@ -1,0 +1,6 @@
+img/jmazing.png filter=lfs diff=lfs merge=lfs -text
+img/life_aquatic.jpg filter=lfs diff=lfs merge=lfs -text
+img/pmazing.jpg filter=lfs diff=lfs merge=lfs -text
+img/2016_election_shitstorm.jpg filter=lfs diff=lfs merge=lfs -text
+img/dmazing.jpg filter=lfs diff=lfs merge=lfs -text
+img/dragonet.jpg filter=lfs diff=lfs merge=lfs -text

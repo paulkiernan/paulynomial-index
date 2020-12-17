@@ -1,0 +1,15 @@
+FROM: Kris Harbold 
+TO:   LIFE AQUATIC
+---
+
+So despite the fact that it sounds rather like Guppy, I’ve come up with my fish name recommendation: Goby.  
+
+Gobbies are a pretty common type of fish, but have some pretty cool characteristics that I think speak well to what we’re building.  As per the usual, I’m about to rant about what these characteristics are and why I think they apply to our goals, read on if you wish.
+
+*Symbiosis*: many goby species opt to share their burrows with burrowing shrimp in a symbiotic relationship.  Shrimp have pretty crap eyesight which makes them vulnerable to predators, gobbies however have great eye sight, so they’ll often share their burrows with shrimp, warning the shrimp of when danger is near.  In exchange for protection, the shrimp assist with the upkeep of the burrow.  This feels particularly suiting to our product as I feel like we’re the gobbies here.  Our network makes us capable of seeing the full span of what’s happening in our ecosystem.  Through this product we can feed that information to our users, helping inform them of their surrounding which they can’t really see on their own.  In exchange our users help build up our “burrow” (network), by writing content that makes our product tick.
+
+*Navigation*: gobbies certainly do not have the “memory of a goldfish”, in fact they have a remarkable ability to remember landmarks and use them for navigation.  Current journalists and editors rely on “gut feeling” when deciding what to write, even though they make these decisions continuously.  This product attempt to bring data and Chartbeat’s navigations skills to content creators to help guide decision making.  So unlike our journalist friends, where’s about to use the landmarks of data to help remember which was to go in the future, and guide them accordingly.
+
+*Burrowing*: this is probably the least cool of their abilities, but still pretty awesome.  Gobbies build burrows in which to lay their eggs and hide from predators, and are impressively smart about how they build these burrows.  The burrow mouth is constructed to speed up water flow as it passes, uping the oxygen that enters the burrow, and increasing the survival rate of their offspring.  Gobbies have therefore learned to manipulate their environment to reinforce the existence of their species.  We’ve discussed ways in which we may use user feedback to train the discovery tool.  Dan and I were also discussing yesterday ways in which we may be able to use user interaction in the tool to learn our users preferred content suggestions.  This type of interaction and learning allows us to use the habitat of our product to reinforce it’s existence and provide a heightened ability to thrive, similar to what gobbies do with their burrows.
+
+anyway, yeah, Goby
