@@ -2,8 +2,6 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    cert-manager.io/issuer: letsencrypt-staging
-    cert-manager.io/issuer-kind: Issuer
     field.cattle.io/description: Ingress for main personal website splash page
   name: paulynomial-index-ingress
   namespace: paulynomial-index
@@ -33,9 +31,3 @@ spec:
           servicePort: 80
         path: /
         pathType: Prefix
-  tls:
-  - hosts:
-    - paulynomial.com
-    - paulinomial.com
-    - paul-kiernan.com
-    secretName: letsencrypt-staging-tls-secret
