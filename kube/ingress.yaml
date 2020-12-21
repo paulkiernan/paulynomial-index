@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
+    cert-manager.io/issuer: letsencrypt-prod
+    cert-manager.io/issuer-kind: ClusterIssuer
     field.cattle.io/description: Ingress for main personal website splash page
   name: paulynomial-index-ingress
   namespace: paulynomial-index
@@ -31,3 +33,7 @@ spec:
           servicePort: 80
         path: /
         pathType: Prefix
+  tls:
+  - hosts:
+    - paulynomial.com
+    secretName: paulynomial-ingress-prod-tls
