@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: paulynomial-index
-        image: paulynomial/paulynomial-index:latest
+        image: ghcr.io/paulkiernan/paulynomial-index:1.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
