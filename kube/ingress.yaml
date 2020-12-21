@@ -36,4 +36,6 @@ spec:
   tls:
   - hosts:
     - paulynomial.com
+    - paulinomial.com
+    - paul-kiernan.com
     secretName: paulynomial-ingress-prod-tls
