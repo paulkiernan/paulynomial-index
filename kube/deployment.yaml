@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: paulynomial-index-nginx
+  name: nginx
   labels:
     app: paulynomial-index
 spec:
