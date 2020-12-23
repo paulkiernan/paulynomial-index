@@ -5,7 +5,7 @@ metadata:
     cert-manager.io/issuer: letsencrypt-prod
     cert-manager.io/issuer-kind: ClusterIssuer
     field.cattle.io/description: Ingress for main personal website splash page
-  name: paulynomial-index-ingress
+  name: paulynomial
   namespace: paulynomial-index
 spec:
   rules:
@@ -17,6 +17,26 @@ spec:
           servicePort: 80
         path: /
         pathType: Prefix
+  tls:
+  - hosts:
+    - paulynomial.com
+    secretName: paulynomial-ingress-prod-tls
+
+---
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/issuer: letsencrypt-prod
+    cert-manager.io/issuer-kind: ClusterIssuer
+    field.cattle.io/description: |
+      Redirect ingress from other owned domains to paulynomial.com
+    nginx.ingress.kubernetes.io/permanent-redirect: https://paulynomial.com
+  name: paulinomial-redirect
+  namespace: paulynomial-index
+spec:
+  rules:
   - host: paulinomial.com
     http:
       paths:
@@ -35,7 +55,6 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - paulynomial.com
     - paulinomial.com
     - paul-kiernan.com
-    secretName: paulynomial-ingress-prod-tls
+    secretName: paulynomial-redirect-ingress-prod-tls
