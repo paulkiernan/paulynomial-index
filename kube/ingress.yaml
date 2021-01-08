@@ -17,6 +17,14 @@ spec:
           servicePort: 80
         path: /
         pathType: Prefix
+  - host: www.paulynomial.com
+    http:
+      paths:
+      - backend:
+          serviceName: paulynomial-index
+          servicePort: 80
+        path: /
+        pathType: Prefix
   tls:
   - hosts:
     - paulynomial.com
@@ -45,7 +53,23 @@ spec:
           servicePort: 80
         path: /
         pathType: Prefix
+  - host: www.paulinomial.com
+    http:
+      paths:
+      - backend:
+          serviceName: paulynomial-index
+          servicePort: 80
+        path: /
+        pathType: Prefix
   - host: paul-kiernan.com
+    http:
+      paths:
+      - backend:
+          serviceName: paulynomial-index
+          servicePort: 80
+        path: /
+        pathType: Prefix
+  - host: www.paul-kiernan.com
     http:
       paths:
       - backend:
