@@ -1,4 +1,4 @@
-FROM nginx:1.19.6-alpine
+FROM nginx:1.22.1-alpine
 
 LABEL org.opencontainers.image.source=https://github.com/paulkiernan/paulynomial-index
 
