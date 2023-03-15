@@ -129,9 +129,11 @@ a.button:hover {
 
 .about-animation-content {
   width: 250px;
-  position: relative;
+  position: fixed;
   float: right;
-  display: hidden;
+  display: none;
+  bottom: 5px;
+  right: 5px;
   font-size: 0.7em;
   z-index: 2;
   margin-top: 15px;
@@ -144,5 +146,11 @@ a.button:hover {
 .about-animation-content a {
   color: #343434;
   font-weight: bold;
+  text-decoration: none;
+}
+
+.modal-content p a {
+  color: #343434;
+  font-style: italic;
   text-decoration: none;
 }
