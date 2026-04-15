@@ -1,0 +1,3 @@
+[submodule "swarmphony"]
+	path = swarmphony
+	url = git@github.com:paulkiernan/swarmphony.git
