@@ -1,0 +1,10 @@
+version: '3'
+
+tasks:
+  default: task --list
+  update-swarmphony:
+    desc: Pull latest swarmphony commits into this repo
+    cmds:
+      - git submodule update --remote swarmphony
+      - git add swarmphony
+      - "git commit -m 'chore: update swarmphony submodule'"
