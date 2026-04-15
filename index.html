@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <base href="">
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paul Kiernan</title>
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico"/>
     <link rel="canonical" href="http://www.paulynomial.com/"/>
@@ -21,68 +21,107 @@
     <meta name="description" content="Hyperbolic Tangents by Paul Kiernan" />
     <meta name="keywords" content="paul kiernan, paul, kiernan, paulynomial, paulinomial, reddit, chartbeat, moat, cornell, staff engineer, backend engineer, engineer, blog, programming, python, scala, physics, particle physics, software, software development, systems, developer">
 
-    <link rel="stylesheet" href="/css/paulynomial.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="swarmphony/style.css">
+    <link rel="stylesheet" href="/css/paulynomial.css">
   </head>
 
   <body>
-      <!-- Hi Googlebot! -->
-      <h1 style="display: none;">Paul Kiernan</h1>
-      <p style="display: none;">
-        Paul Kiernan is a Staff Engineer at Reddit in San Francisco. He enjoys
-        software development, particle physics, cooking, and travel.
+    <!-- Hi Googlebot! -->
+    <h1 style="display: none;">Paul Kiernan</h1>
+    <p style="display: none;">
+      Paul Kiernan is a Staff Engineer at Reddit in San Francisco. He enjoys
+      software development, particle physics, cooking, and travel.
+    </p>
+
+    <!-- Bottom-left now playing -->
+    <div id="now-playing" class="hidden">
+      <span id="now-playing-text"></span>
+    </div>
+
+    <!-- Bottom-right corner UI -->
+    <div id="corner-ui">
+      <button id="mute-btn" title="Toggle mute">
+        <span id="mute-icon">♪</span>
+      </button>
+      <button id="whats-this-btn">what's this?</button>
+      <button id="dev-btn">&lt;/dev&gt;</button>
+    </div>
+
+    <!-- What's this popover -->
+    <div id="whats-this-panel" class="hidden">
+      <p>
+        <strong><a href="https://github.com/paulkiernan/swarmphony" target="_blank" rel="noreferrer">swarmphony</a></strong> is a generative murmuration built on the topological neighbor model described by <a href="https://arxiv.org/abs/0709.1916" target="_blank" rel="noreferrer">Ballerini et al. (2008)</a>.
+        Each of the 4,096 birds tracks only its <em>7 nearest neighbors</em> and follows three rules: <em>avoid collisions</em>, <em>align headings</em>, and <em>stay close</em>. The sweeping, organic motion you see emerges entirely from these local interactions.
       </p>
+      <p>
+        The simulation is <strong>audio-reactive</strong>, driven by a live stream from <a href="https://somafm.com/defcon/" target="_blank" rel="noreferrer">DEF CON Radio</a> on SomaFM — click ♪ to start.
+        Bass kicks scatter the flock, mids tighten alignment, and treble sweeps drive turbulent flutter.
+      </p>
+    </div>
 
-      <div id="background"></div>
-      <div class="modal">
-          <div class="modal-content">
-              <h2><hr><span>paulynomial</span><hr></h2>
-              <p>
-                hyperbolic tangents
-                <br/>
-                by <a href = "mailto: hi@paulynomial.com?Subject=Bonjour">Paul Kiernan</a>
-              </p>
-              <div class="buttons">
-                  <a href="https://github.com/paulkiernan/resume/raw/main/pdf/latest.pdf" class="button">Resume</a>
-                  <a href="https://github.com/paulkiernan" class="button">Github</a>
-                  <a href="https://www.linkedin.com/in/paulynomial" class="button">LinkedIn</a>
-                  <a href="mailto:hi@paulynomial.com?Subject=Bonjour" target="#" class="button">Email</a>
-              </div>
-          </div>
-      </div>
+    <!-- Dev mode panel -->
+    <div id="dev-mode-panel" class="hidden">
+      <div style="font-family: monospace; font-size: 10px; color: #999; margin-bottom: 3px;">spectrogram</div>
+      <canvas id="spectrogram-canvas" width="300" height="100"></canvas>
+      <div style="font-family: monospace; font-size: 10px; color: #999; margin-top: 6px; margin-bottom: 3px;">kicks — scatter</div>
+      <canvas id="kick-canvas" width="300" height="60"></canvas>
+      <div style="font-family: monospace; font-size: 10px; color: #999; margin-top: 6px; margin-bottom: 3px;">mids — alignment tightness</div>
+      <canvas id="mids-canvas" width="300" height="60"></canvas>
+      <div style="font-family: monospace; font-size: 10px; color: #999; margin-top: 6px; margin-bottom: 3px;">treble — turbulent flutter</div>
+      <canvas id="treble-canvas" width="300" height="60"></canvas>
+      <div style="font-family: monospace; font-size: 10px; color: #999; margin-top: 6px; margin-bottom: 3px;">energy — speed</div>
+      <canvas id="energy-canvas" width="300" height="60"></canvas>
+      <div id="dev-stats" style="font-family: monospace; font-size: 12px; margin-top: 5px;"></div>
 
-      <div class="about-animation">
-          <span><a href="#">What are these squiggles?</a></span>
+      <div id="dev-sliders" style="margin-top: 10px; display: grid; grid-template-columns: max-content 38px 52px 1fr; gap: 4px 10px; font-size: 11px; align-items: center; font-family: monospace; color: #333;">
+        <span>Separation Dist</span>  <span id="val-sep-dist">20.0</span>  <span></span>                                          <input type="range" id="sl-sep-dist"   min="1"  max="100"  value="20"  step="1">
+        <span>Alignment Dist</span>   <span id="val-ali-dist">136.0</span> <span></span>                                          <input type="range" id="sl-ali-dist"   min="1"  max="200"  value="136" step="1">
+        <span>Cohesion Dist</span>    <span id="val-coh-dist">150.0</span> <span></span>                                          <input type="range" id="sl-coh-dist"   min="1"  max="200"  value="150" step="1">
+        <span>Separation Force</span>     <span id="val-sep-force">25.0</span> <span id="live-sep-force" class="live-val"></span>    <input type="range" id="sl-sep-force"  min="0"  max="100"  value="25"  step="1">
+        <span>Alignment Force</span>      <span id="val-ali-force">3.5</span>  <span id="live-ali-force" class="live-val"></span>    <input type="range" id="sl-ali-force"  min="0"  max="5"    value="3.5" step="0.05">
+        <span>Cohesion Force</span>       <span id="val-coh-force">5.0</span>  <span id="live-coh-force" class="live-val"></span>    <input type="range" id="sl-coh-force"  min="0"  max="20"   value="5"   step="0.1">
+        <span>Max Speed</span>            <span id="val-max-speed">25.0</span> <span id="live-max-speed" class="live-val"></span>    <input type="range" id="sl-max-speed"  min="5"  max="60"   value="25"  step="1">
+        <span>Kick Force</span>           <span id="val-kick-force">120.0</span><span></span>                                         <input type="range" id="sl-kick-force" min="0"  max="2000" value="120" step="10">
       </div>
+    </div>
 
-      <div class="about-animation-content">
-          This animated background is a simulation of a
-          <a href="https://en.wikipedia.org/wiki/Bubble_chamber" target="#">Bubble Chamber</a>,
-          an instrument that was used to detect electrically charged particles
-          in the earliest days of high-energy particle physics experimentation.
-          The patterns demonstrate properties of natural geometric decay as
-          charged particles move through the magnetic field of the Bubble
-          Chamber. I find them to be a strikingly beautiful natural phenomenon.
+    <canvas id="canvas"></canvas>
+
+    <!-- paulynomial modal -->
+    <div class="modal">
+      <div class="prompt">~/paulynomial</div>
+      <div class="modal-name">paul kiernan</div>
+      <div class="modal-tagline">hyperbolic tangents</div>
+      <div class="modal-links">
+        <a href="https://github.com/paulkiernan/resume/raw/main/pdf/latest.pdf">resume</a>
+        <a href="https://github.com/paulkiernan">github</a>
+        <a href="https://www.linkedin.com/in/paulynomial">linkedin</a>
+        <a href="mailto:hi@paulynomial.com?Subject=Bonjour">email</a>
       </div>
+    </div>
+
+    <script type="module" src="swarmphony/main.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-41647925-3', 'auto');
+      ga('send', 'pageview');
+    </script>
   </body>
-
-  <!-- load nonblocking javascript -->
-  <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
-  <script type="text/javascript" src="js/particles.2.0.0.js"></script>
-  <script>
-    $( ".about-animation" ).click(function() {
-      $( ".about-animation-content" ).toggle();
-    });
-  </script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-41647925-3', 'auto');
-    ga('send', 'pageview');
-  </script>
-
 </html>
-
