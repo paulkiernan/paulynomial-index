@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "property-no-vendor-prefix": true,
+    "shorthand-property-no-redundant-values": true,
+    "string-quotes": "double"
+  }
+}
