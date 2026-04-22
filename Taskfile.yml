@@ -8,3 +8,8 @@ tasks:
       - git submodule update --remote swarmphony
       - git add swarmphony
       - "git commit -m 'chore: update swarmphony submodule'"
+
+  serve:
+    desc: Preview the site locally with live reload
+    cmds:
+      - npx browser-sync start --server --files "**/*.html, **/*.css, **/*.js"
