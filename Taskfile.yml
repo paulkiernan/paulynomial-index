@@ -2,12 +2,12 @@ version: '3'
 
 tasks:
   default: task --list
-  update-swarmphony:
-    desc: Pull latest swarmphony commits into this repo
+  update-entrainment:
+    desc: Pull latest entrainment commits into this repo
     cmds:
-      - git submodule update --remote swarmphony
-      - git add swarmphony
-      - "git commit -m 'chore: update swarmphony submodule'"
+      - git submodule update --remote entrainment
+      - git add entrainment
+      - "git commit -m 'chore: update entrainment submodule'"
 
   serve:
     desc: Preview the site locally with live reload
