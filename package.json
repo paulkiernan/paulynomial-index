@@ -1,0 +1,18 @@
+{
+  "name": "paulynomial-index",
+  "private": true,
+  "description": "paulynomial.com — linting toolchain (site itself is static)",
+  "scripts": {
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:docker && npm run lint:json",
+    "lint:html": "htmlhint \"**/*.html\" --ignore \"entrainment/**,media/404.html,node_modules/**\"",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:docker": "dockerfilelint Dockerfile",
+    "lint:json": "git ls-files '*.json' | xargs -n1 jsonlint -q"
+  },
+  "devDependencies": {
+    "dockerfilelint": "^1.8.0",
+    "htmlhint": "^1.1.4",
+    "jsonlint": "^1.6.3",
+    "stylelint": "^14.16.1"
+  }
+}

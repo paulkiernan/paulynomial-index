@@ -2,6 +2,11 @@ version: '3'
 
 tasks:
   default: task --list
+
+  lint:
+    desc: Run the same lint checks CI runs (htmlhint, stylelint, dockerfilelint, jsonlint)
+    cmds:
+      - ./scripts/lint.sh
   update-entrainment:
     desc: Pull latest entrainment commits into this repo
     cmds:

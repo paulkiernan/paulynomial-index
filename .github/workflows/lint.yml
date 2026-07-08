@@ -1,0 +1,24 @@
+name: Lint
+
+# Runs standalone on PRs, and as the required gate inside release.yml on
+# pushes to main (workflow_call). Runs the exact same `npm run lint` that
+# `task lint` runs locally — same linters, same pinned versions, no Docker.
+on:
+  pull_request:
+  workflow_call:
+
+jobs:
+  lint:
+    name: Lint code base
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
