@@ -2,6 +2,21 @@ version: '3'
 
 tasks:
   default: task --list
+
+  lint:
+    desc: Run the same Super-Linter checks CI runs (requires Docker)
+    cmds:
+      - >-
+        docker run --rm
+        -e RUN_LOCAL=true
+        -e FILTER_REGEX_EXCLUDE='.*(404\.html|entrainment/).*'
+        -e VALIDATE_CSS=true
+        -e VALIDATE_DOCKERFILE=true
+        -e VALIDATE_HTML=true
+        -e VALIDATE_JAVASCRIPT_STANDARD=true
+        -e VALIDATE_JSON=true
+        -v "{{.TASKFILE_DIR}}:/tmp/lint"
+        github/super-linter:v4
   update-entrainment:
     desc: Pull latest entrainment commits into this repo
     cmds:

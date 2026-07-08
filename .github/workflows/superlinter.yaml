@@ -1,5 +1,10 @@
 name: Super-Linter
-on: push
+
+# Runs standalone on PRs, and as the lint gate inside release.yml on main
+# pushes (workflow_call) — no separate push trigger, or it would run twice.
+on:
+  pull_request:
+  workflow_call:
 
 jobs:
   super-lint:
@@ -10,13 +15,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Super-Linter
         uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: main
-          FILTER_REGEX_EXCLUDE: 404.html
+          # entrainment/ is a vendored submodule with its own CI
+          FILTER_REGEX_EXCLUDE: .*(404\.html|entrainment/).*
           OUTPUT_DETAILS: detailed
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_CSS: true

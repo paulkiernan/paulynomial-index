@@ -13,7 +13,16 @@ permissions:
   packages: write
 
 jobs:
+  # Gate: lint must pass before anything is tagged, built, or published.
+  # If this fails, release/publish are skipped — no image ships.
+  lint:
+    uses: ./.github/workflows/superlinter.yaml
+    permissions:
+      contents: read
+      statuses: write
+
   release:
+    needs: lint
     runs-on: ubuntu-latest
     outputs:
       new_tag: ${{ steps.tag.outputs.new_tag }}
